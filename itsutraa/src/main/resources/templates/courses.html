@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses | IT SUTRAA</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #fff;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .course-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .course-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 20px;
+            width: 250px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .course-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .course-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .featured-course {
+            border: 2px solid #ff6600;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.1;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .course-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>All Courses</h2>
+
+<div class="course-grid">
+    <div class="course-card"
+         th:each="course : ${courses}"
+         th:classappend="${course.title == 'Summer Internship'} ? ' featured-course' : ''">
+        <a th:href="@{'/course-details/' + ${course.id}}">
+            <img th:src="@{${course.imageUrl}}" alt="Course Image" />
+            <h3 th:text="${course.title}"></h3>
+            <p>₹<span th:text="${course.price}"></span></p>
+        </a>
+    </div>
+</div>
+
+<div class="watermark">IT Sutraa</div>
+
+</body>
+</html>

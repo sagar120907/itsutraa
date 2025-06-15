@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT SUTRAA - Empowering Developers</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #f5f5f5;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 50px;
+    }
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    .hero {
+      background: linear-gradient(to right, #fff, #ffecd2);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .cta-button {
+      background: #ff6600;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .cta-button:hover {
+      background: #e65c00;
+    }
+    .features, .stats, .testimonials, .courses-preview, .contact-cta {
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .features .box, .stats .stat {
+      display: inline-block;
+      margin: 20px;
+      max-width: 250px;
+    }
+    .testimonials p {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    footer {
+      background: #222;
+      color: rgb(64, 0, 0);
+      padding: 30px 40px;
+      text-align: center;
+    }
+    footer a {
+      color: #ff6600;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+	<header>
+	  <div style="display: flex; flex-direction: column; align-items: flex-start;">
+	    <h1 style="font-size: 1.6rem; color: #ff6600; margin-bottom: 5px; font-weight: 700;">IT SUTRAA</h1>
+	    <div class="logo">
+	      <img th:src="@{/images/logo.png}" alt="IT Sutraa Logo">
+	    </div>
+	  </div>
+	  <div class="nav-links">
+	    <a href="/courses">Courses</a>
+	    <a href="/login">Login</a>
+	    <a href="/register">Register</a>
+	  </div>
+	</header>
+
+<section class="hero">
+  <h1>Become a Top 5% Developer</h1>
+  <p>Join IT Sutraa and gain skills that make you industry-ready with real-world experience.</p>
+  <a href="/courses" class="cta-button">Explore Courses</a>
+</section>
+
+<section class="features">
+  <h2>Why Choose IT Sutraa?</h2>
+  <div class="box">
+    <h3>🧠 Industry-Aligned Curriculum</h3>
+    <p>Learn the exact skills companies are hiring for.</p>
+  </div>
+  <div class="box">
+    <h3>🧑‍💻 Hands-on Internships</h3>
+    <p>Get real project experience with expert guidance.</p>
+  </div>
+  <div class="box">
+    <h3>📜  Certificates</h3>
+    <p>Build your portfolio and prove your expertise.</p>
+  </div>
+  <div class="box">
+    <h3>📈 Career Support</h3>
+    <p>Resume building, mock interviews.</p>
+  </div>
+</section>
+
+<section class="stats">
+  <h2>Our Impact</h2>
+  <div class="stat"><h2>95%</h2><p>Course Completion Rate</p></div>
+  <div class="stat"><h2>Industries  </h2><p>Expert Mentors</p></div>
+  <div class="stat"><h2>Same Domain </h2><p>Hiring Partners</p></div>
+  
+</section>
+
+<section class="courses-preview">
+  <h2>Popular Courses</h2>
+  <p>Explore our most enrolled programs</p>
+  <div th:each="course : ${courses}">
+    <div class="course-card" style="margin: 20px; display: inline-block;">
+      <img th:src="@{${course.imageUrl}}" alt="Course Image" style="width: 250px; height: auto; border-radius: 8px;">
+      <h3 th:text="${course.title}"></h3>
+      <p>₹<span th:text="${course.price}"></span></p>
+      <a th:href="@{'/course-details/' + ${course.id}}" class="cta-button">Learn More</a>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="contact-cta">
+  <h2>Need Guidance?</h2>
+  <p>Our team is happy to help you choose the right course or plan your career.</p>
+
+</section>
+
+<footer>
+  <p>© 2025 IT Sutraa. All rights reserved.</p>
+ <p> Contact Us</p>
+  <p>Email: itsutraaedu@gmail.com | Phone: 7065360488</p>
+  
+</footer>
+<div class="watermark">IT Sutraa</div>
+
+</body>
+</html>

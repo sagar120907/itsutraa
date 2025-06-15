@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Course Form | Admin</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h2 th:text="${course.id != null ? 'Edit Course' : 'Add New Course'}"></h2>
+
+    <form th:action="@{/admin/courses/save}" th:object="${course}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" required /><br><br>
+
+        <label>Price:</label>
+        <input type="number" th:field="*{price}" required /><br><br>
+
+        <label>Description:</label><br>
+        <textarea th:field="*{description}" rows="4" cols="50" required></textarea><br><br>
+
+        <label>Image URL (e.g. /images/java.png):</label>
+        <input type="text" th:field="*{imageUrl}" /><br><br>
+
+        <button type="submit">💾 Save</button>
+    </form>
+
+    <a href="/admin/courses">← Back to Course List</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title th:text="${course.title}">Course</title>
+</head>
+<body>
+<h2 th:text="${course.title}"></h2>
+<p th:text="${course.description}"></p>
+<p>Price: ₹<span th:text="${course.price}"></span></p>
+
+<form th:action="@{'/enroll/' + ${course.id}}" method="post">
+    <button type="submit">Enroll Now</button>
+</form>
+</body>
+<div class="watermark"></div>
+</html>

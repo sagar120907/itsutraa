@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard | IT SUTRAA</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+      .dashboard-links {
+          display: flex;
+          gap: 20px;
+          margin-bottom: 30px;
+      }
+      .dashboard-links a {
+          padding: 12px 24px;
+          background-color: #ff6600;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: bold;
+      }
+      .dashboard-links a:hover {
+          background-color: #e65900;
+      }
+
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 2rem;
+      }
+      th, td {
+          border: 1px solid #ddd;
+          padding: 10px;
+          text-align: left;
+      }
+      th {
+          background-color: #f2f2f2;
+      }
+      h2 {
+          margin-top: 1rem;
+      }
+    </style>
+</head>
+<body>
+<h1>Admin Dashboard</h1>
+
+<div class="dashboard-links">
+    <a href="/admin/courses">📘 Manage Courses</a>
+    <a href="/admin/students">👨‍🎓 Manage Students</a>
+</div>
+
+<h2>Recent Enrollments</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Course Title</th>
+      <th>Payment Status</th>
+      <th>Payment ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="enrollment : ${enrollments}">
+      <td th:text="${enrollment.student.name}">Student Name</td>
+      <td th:text="${enrollment.course.title}">Course Title</td>
+      <td th:text="${enrollment.paymentStatus ? 'Paid' : 'Pending'}">Payment Status</td>
+      <td th:text="${enrollment.paymentId}">Payment ID</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
